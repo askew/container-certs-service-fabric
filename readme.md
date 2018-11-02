@@ -4,11 +4,11 @@ Containers are a great deployment mechanism for micro-services, but if you want 
 
 This example focuses on how to get a certificate stored in [Azure KeyVault][kv] into a container running on [Service Fabric][sf]. The example uses a Windows container running IIS, but the process would be the same for a Linus container, the scripts would be slightly different.
 
-Service Fabric itself doe provide a mechanism for deploying a certificat into a container when the service starts up, see 
+Service Fabric itself does provide a mechanism for deploying a certificate into a container when the service starts up, see 
 
 [Import a certificate file into a container running on Service Fabric][sfcert]
 
-However this mechanism requires the certificate to be installed on each node in the cluster beforehand. The certificates also need to be installed with an exportable private key. If you use the standard mechanism for deploying certificates to Virtual Machine Scale-sets, the certificates will be installed with rights only to the System account and not exportable. It's also not ideal having to install all the certificate you need onto the cluster nodes.
+However, this mechanism requires the certificate to be installed on each node in the cluster beforehand. The certificates also need to be installed with an exportable private key. If you use the standard mechanism for deploying certificates to Virtual Machine Scale-sets, the certificates will be installed with rights only to the System account and not exportable. It's also not ideal having to install all the certificate you need onto the cluster nodes.
 
 This example uses Azure Managed Service Identities (MSI) to authenticate to KeyVault to get the certificate. Currently MSIs are a VM level feature. The ability to assign an MSI to a Service Fabric service is on the road-map, by not ready yet. I'll update this when it is.
 
